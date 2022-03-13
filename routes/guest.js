@@ -4,7 +4,14 @@ const generateID = require('../helper/tools');
 
 router.route('/').get((req,res)=>{
     guest.find()
-    .then(users=>req.json('users'))
+    .then(users=>res.json(users))
+    .catch(err=>res.status(400).json('error ! ' + err));
+})
+
+router.route('/:id').get((req,res)=>{
+    console.log(req.params.id);
+    guest.findOne({"id":req.params.id})
+    .then(users=>res.json(users))
     .catch(err=>res.status(400).json('error ! ' + err));
 })
 
