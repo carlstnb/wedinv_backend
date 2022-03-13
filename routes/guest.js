@@ -42,7 +42,10 @@ router.route('/:id').delete((req,res)=>{
 })
 
 router.route('/update').post((req,res)=>{
-    guest.updateOne({"id":req.params.id},{"name":"ayay"})
+    console.log('updating');
+    console.log(req.body);
+
+    guest.updateOne({id:req.body.id},req.body)
     .then(()=>{
                 res.json('succesfully updated!')
     }).catch(err=>res.status(400).json('err!'+ err))
