@@ -4,7 +4,6 @@ const schema = mongoose.Schema;
 
 const arrGuesst = new schema({
     id:{type:String,required:true,unique:true},
-    idGuest:{type:String,required:true,unique:true},
     idRSVP:{type:String,required:true,unique:true},
 },{
     timestamps:true

@@ -25,7 +25,7 @@ connection.once('open',()=>{
 
 app.use('/guest',guestRoute);
 app.use('/RSVP',RSVPRoute);
-app.use('/arrGuest',arrGuestRoute);
+app.use('/arrival',arrGuestRoute);
 
 app.listen(port,()=>{
     console.log("server is running!");

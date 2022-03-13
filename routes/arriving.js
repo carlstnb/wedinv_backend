@@ -2,21 +2,19 @@ const router = require('express').Router();
 const model_ = require('../models/arrivingGuest.model');
 const generateID = require('../helper/tools');
 
-router.route('/').get((req,res)=>{
+router.route('/all').get((req,res)=>{
     model_.find()
     .then(users=>req.json('users'))
     .catch(err=>res.status(400).json('error ! ' + err));
 })
 
 
-router.route('/add').post((req,res)=>{
+router.route('/:id').get((req,res)=>{
 console.log("req arriving");
-console.log(req.body);
 
     const newData = new model_({
         id : `${generateID}`,
-        idGuest:req.body.idGuest,
-        idRSVP:req.body.idRSVP,
+        idRSVP:req.params.id,
     });
 
     console.log("adding");
