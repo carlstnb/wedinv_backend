@@ -14,7 +14,7 @@ console.log("req b ");
 console.log(req.body);
 
     const newGuest = new guest({
-        id : `${generateID}`,
+        id : `${generateID()}`,
         name:req.body.name,
         relationSide:parseInt(req.body.relationSide),
         isAFamily:Boolean(req.body.isAFamily),
@@ -30,6 +30,7 @@ console.log(req.body);
     }).catch(err=>res.status(400).json('err!'+ err))
 
 })
+
 
 router.route('/:id').delete((req,res)=>{
 

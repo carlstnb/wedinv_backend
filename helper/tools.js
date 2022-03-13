@@ -13,4 +13,4 @@ const generateIDRSVP =()=>{
 }
 
 
-module.exports = generateID(),generateIDRSVP();
+module.exports = generateID,generateIDRSVP;

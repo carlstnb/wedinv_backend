@@ -14,7 +14,7 @@ console.log("req conf");
 console.log(req.body);
 
     const newData = new model_({
-        id : `${generateIDRSVP}`,
+        id : `${generateIDRSVP()}`,
         idGuest:req.body.idGuest,
         willArrived:Boolean(req.body.willArrived),
         numberOfExtras:parseInt(req.body.numberOfExtras),
