@@ -4,7 +4,14 @@ const generateIDRSVP = require('../helper/tools');
 
 router.route('/').get((req,res)=>{
     model_.find()
-    .then(users=>req.json('users'))
+    .then(users=>res.json(users))
+    .catch(err=>res.status(400).json('error ! ' + err));
+})
+
+router.route('/:id').get((req,res)=>{
+    console.log(req.params.id);
+    model_.findOne({"idGuest":req.params.id})
+    .then(users=>res.json(users))
     .catch(err=>res.status(400).json('error ! ' + err));
 })
 
