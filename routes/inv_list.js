@@ -2,6 +2,15 @@ const router = require('express').Router();
 const model_ = require('../models/invitedList.model');
 const generateID = require('../helper/tools');
 
+router.route('/all').get((req,res)=>{
+
+    console.log("getting all");
+    model_.find()
+    .then(users=>res.json(users))
+    .catch(err=>res.status(400).json('error ! ' + err));
+})
+
+
 router.route('/:id').get((req,res)=>{
 
     console.log('id :' + req.params.id);
