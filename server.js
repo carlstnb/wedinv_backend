@@ -8,6 +8,7 @@ const port = process.env.PORT ||5000
 const guestRoute = require('./routes/guest');
 const RSVPRoute = require('./routes/confirmation');
 const arrGuestRoute = require('./routes/arriving');
+const invite = require('./routes/inv_list');
 
 require('dotenv').config();
 
@@ -25,7 +26,9 @@ connection.once('open',()=>{
 
 app.use('/guest',guestRoute);
 app.use('/RSVP',RSVPRoute);
-app.use('/arrival',arrGuestRoute);
+app.use('/attendance',arrGuestRoute);
+app.use('/invitation',invite);
+
 
 app.listen(port,()=>{
     console.log("server is running!");

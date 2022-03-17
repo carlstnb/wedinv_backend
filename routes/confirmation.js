@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const model_ = require('../models/arrivalConfirmation.model');
-const generateIDRSVP = require('../helper/tools');
+const generateID = require('../helper/tools');
 
 router.route('/').get((req,res)=>{
     model_.find()
@@ -17,11 +17,11 @@ router.route('/:id').get((req,res)=>{
 
 
 router.route('/add').post((req,res)=>{
-console.log("req conf");
+console.log("req conf add");
 console.log(req.body);
 
     const newData = new model_({
-        id : `${generateIDRSVP()}`,
+        id : `${generateID.generateIDRSVP()}`,
         idGuest:req.body.idGuest,
         willArrived:Boolean(req.body.willArrived),
         numberOfExtras:parseInt(req.body.numberOfExtras),

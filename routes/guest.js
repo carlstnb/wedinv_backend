@@ -21,7 +21,7 @@ console.log("req b ");
 console.log(req.body);
 
     const newGuest = new guest({
-        id : `${generateID()}`,
+        id : `${generateID.generateID()}`,
         name:req.body.name,
         relationSide:parseInt(req.body.relationSide),
         isAFamily:Boolean(req.body.isAFamily),
