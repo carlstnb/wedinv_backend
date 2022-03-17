@@ -21,23 +21,31 @@ console.log("req b ");
 console.log(req.body);
 
 const idGuest =`${generateID.generateID()}`;
+let fam = req.body.isAFamily;
+
+if(fam=="true"|fam=="false"){
+    if(fam=="true"){
+        fam = true;
+    }else{
+        fam = false;
+    }
+}
 
     const newGuest = new guest({
         id : idGuest,
         name:req.body.name,
         relationSide:parseInt(req.body.relationSide),
-        isAFamily:Boolean(req.body.isAFamily),
+        isAFamily:fam,
         expectedExtras:parseInt(req.body.expectedExtras),
     });
 
     console.log("adding");
     console.log(newGuest);
-    
+   
 
     newGuest.save().then(()=>{
         res.json('guest added! id is ' + idGuest)
     }).catch(err=>res.status(400).json('err!'+ err))
-
 })
 
 
