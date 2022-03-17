@@ -20,8 +20,10 @@ router.route('/add').post((req,res)=>{
 console.log("req b ");
 console.log(req.body);
 
+const idGuest =`${generateID.generateID()}`;
+
     const newGuest = new guest({
-        id : `${generateID.generateID()}`,
+        id : idGuest,
         name:req.body.name,
         relationSide:parseInt(req.body.relationSide),
         isAFamily:Boolean(req.body.isAFamily),
@@ -33,7 +35,7 @@ console.log(req.body);
     
 
     newGuest.save().then(()=>{
-        res.json('guest added!')
+        res.json('guest added! id is ' + idGuest)
     }).catch(err=>res.status(400).json('err!'+ err))
 
 })

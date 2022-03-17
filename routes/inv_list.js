@@ -24,9 +24,11 @@ router.route('/:id').get((req,res)=>{
 router.route('/add').post((req,res)=>{
     console.log("req conf");
     console.log(req.body);
+
+    const idInv =`${generateID.generateIDArriving()}`;
     
         const newData = new model_({
-            id : `${generateID.generateIDArriving()}`,
+            id : idInv,
             idGuest:req.body.idGuest,
         });
         
@@ -37,7 +39,7 @@ router.route('/add').post((req,res)=>{
         console.log(newData);
     
         newData.save().then(()=>{
-            res.json('Guest arrival added!')
+            res.json('Guest arrival added! id :', idInv);
         }).catch(err=>res.status(400).json('err!'+ err))
         
     })

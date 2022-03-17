@@ -20,8 +20,10 @@ router.route('/add').post((req,res)=>{
 console.log("req conf add");
 console.log(req.body);
 
+const idRSVP =`${generateID.generateIDRSVP()}`;
+
     const newData = new model_({
-        id : `${generateID.generateIDRSVP()}`,
+        id : idRSVP,
         idGuest:req.body.idGuest,
         willArrived:Boolean(req.body.willArrived),
         numberOfExtras:parseInt(req.body.numberOfExtras),
@@ -32,7 +34,7 @@ console.log(req.body);
     console.log(newData);
 
     newData.save().then(()=>{
-        res.json('RSVP added!')
+        res.json('RSVP added! id is', idRSVP);
     }).catch(err=>res.status(400).json('err!'+ err))
 })
 
